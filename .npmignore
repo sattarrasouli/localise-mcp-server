@@ -1,4 +1,7 @@
 src/
 .claude/
 .mcp.json
+.next/
+.env*
 tsconfig.json
+node_modules/
