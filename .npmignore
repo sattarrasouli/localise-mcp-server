@@ -1,0 +1,4 @@
+src/
+.claude/
+.mcp.json
+tsconfig.json
