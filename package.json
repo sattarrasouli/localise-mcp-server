@@ -1,8 +1,29 @@
 {
   "name": "localise-mcp-server",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "MCP server for localise.biz translation management",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "localise",
+    "localise.biz",
+    "loco",
+    "translation",
+    "i18n",
+    "l10n",
+    "internationalization",
+    "localization",
+    "claude",
+    "cursor",
+    "ai"
+  ],
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sattarrasouli/localise-mcp-server.git"
+  },
+  "homepage": "https://github.com/sattarrasouli/localise-mcp-server#readme",
   "bin": {
     "localise-mcp": "./build/index.js"
   },
