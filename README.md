@@ -28,6 +28,18 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
+### Claude Code (CLI)
+
+```bash
+claude mcp add localise-biz -- npx -y localise-mcp-server
+```
+
+Then set your API key in your environment:
+
+```bash
+export LOCALISE_API_KEY="your-api-key"
+```
+
 ### Cursor
 
 Add to `.cursor/mcp.json` in your project:
