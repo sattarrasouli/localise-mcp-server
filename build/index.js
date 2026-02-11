@@ -10,13 +10,17 @@ function getApiKey() {
     return key;
 }
 async function locoFetch(endpoint, options = {}) {
-    const { rawBody, ...fetchOptions } = options;
+    const { rawBody, formBody, ...fetchOptions } = options;
     const headers = {
         Authorization: `Loco ${getApiKey()}`,
         ...options.headers,
     };
-    // Loco translations API expects raw string body, not JSON
-    if (!rawBody) {
+    if (formBody) {
+        // Loco asset creation expects URL-encoded form data
+        headers["Content-Type"] = "application/x-www-form-urlencoded";
+        fetchOptions.body = new URLSearchParams(formBody).toString();
+    }
+    else if (!rawBody) {
         headers["Content-Type"] = "application/json";
     }
     const res = await fetch(`${API_BASE}${endpoint}`, {
@@ -97,7 +101,7 @@ server.tool("create_asset", "Create a new translation key (asset) in localise.bi
         body.notes = notes;
     const result = await locoFetch("/assets", {
         method: "POST",
-        body: JSON.stringify(body),
+        formBody: body,
     });
     return {
         content: [
@@ -176,7 +180,7 @@ server.tool("batch_translate", "Create an asset and add translations for multipl
         body.context = context;
     await locoFetch("/assets", {
         method: "POST",
-        body: JSON.stringify(body),
+        formBody: body,
     });
     // Step 2: Add each translation
     const results = [`Asset "${id}" created with source: "${sourceText}"`];
