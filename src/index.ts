@@ -23,7 +23,6 @@ async function locoFetch(
   };
 
   if (formBody) {
-    // Loco asset creation expects URL-encoded form data
     headers["Content-Type"] = "application/x-www-form-urlencoded";
     fetchOptions.body = new URLSearchParams(formBody).toString();
   } else if (!rawBody) {
